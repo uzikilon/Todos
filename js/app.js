@@ -1,4 +1,3 @@
-
 require.config({
   baseUrl: "js/",
   paths: {
@@ -29,8 +28,6 @@ require([
     'views/MasterView'
   ], function($, Backbone, Todo, MasterView ) {
 
-  
- 
   var Router = Backbone.Router.extend({
     routes: {
       "": "main"
@@ -40,14 +37,13 @@ require([
       var router = this;
       var tasks = new Todo.Collection();
       var view = new MasterView({collection: tasks});
-      // $("#container").html(view.render().el).show();
       tasks.fetch({
         success: function(tasks){
-          var view = new MasterView({collection: tasks});
           $("#container").html(view.render().el).show();
         },
         error: function(model, error) {
-          console.error(error);
+          // TODO: handle errors nicer
+          alert(error);
         }
       });
     }
