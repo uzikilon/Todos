@@ -45,7 +45,7 @@ require(['underscore', 'mocha', 'chai', 'sinon'], function(_, mocha, chai, sinon
 
   // Chai
   expect = chai.expect;
-
+git remote add origin https://github.com/uzikilon/Todos.gitgit remote add origin https://github.com/uzikilon/Todos.git
   // Mocha
   mocha.setup({ui: 'bdd', slow: 500});
   // mocha.setup('bdd');
@@ -69,7 +69,7 @@ require(['underscore', 'mocha', 'chai', 'sinon'], function(_, mocha, chai, sinon
   require(specs, function(){
   // require(specs, function(){
     // Start runner
-    mocha.run().globals(['_', '$', 'jQuery', 'Backbone', 'setTimeout', 'setInterval', 'clearTimeout', 'clearInterval']);
+    mocha.run().globals(['_', '$', 'jQuery', 'Backbone']);
   });
 
 });
