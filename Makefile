@@ -1,8 +1,11 @@
-all: less minify
+all: npm less minify
+
+npm: 
+	@npm install
 
 less:
 	@echo "`date`\tCompiling LESS"
-	@node node_modules/less/bin/lessc -verbose css/todos.less > css/todos.css
+	@node node_modules/less/bin/lessc css/todos.less > css/todos.css
 
 minify:
 	@echo "`date`\tCompiling JS"
