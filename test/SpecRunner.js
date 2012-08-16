@@ -44,7 +44,10 @@ window.store = "TestStore"; // override local storage store name - for testing
 require(['underscore', 'mocha', 'chai', 'sinon'], function(_, mocha, chai, sinon){
 
   // Chai
+  chai.Assertion.includeStack = false;
   expect = chai.expect;
+  assert = chai.assert;
+  
   // Mocha
   mocha.setup({ui: 'bdd', slow: 500});
   // mocha.setup('bdd');

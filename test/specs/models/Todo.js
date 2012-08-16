@@ -1,16 +1,18 @@
 describe('Model :: Todo', function() {
 
-  var todos, mockData = { title: 'Foo Bar', timestamp: new Date().getTime() };
+  var todos, todo, mockData = { title: 'Foo Bar', timestamp: new Date().getTime() };
 
   beforeEach(function(done) {
     require(['models/Todo'], function(Todo) {
       todos = new Todo.Collection();
+      todo = new Todo.Model();
       done();
     });
   });
 
   afterEach(function(done){
     // clean mock data from storage
+    todo.destroy();
     todos.fetch({
       success: function(c) {
         c.each(function(m){
@@ -23,7 +25,7 @@ describe('Model :: Todo', function() {
   });
 
   describe('.Create()', function() {
-    it('should create a model', function(done) {
+    it('should create a todo', function(done) {
       var model = todos.create(mockData, {
         success: function(model) {
           
@@ -38,45 +40,56 @@ describe('Model :: Todo', function() {
         }
       });
     });
-    it('should fail', function(done) {
-      var model = todos.create({}, {
-        error: function(model, error) {
-          expect(error).to.equal("Missing Title");
-          expect(model.id).to.be.a('undefined');
-          done();
-        }
-      });
+    it('should fail creating a title-less todo', function() {
+      var spy = sinon.spy();
+      todo.on('error', spy);
+      todo.save({});
+      assert.equal(spy.callCount, 1, 'error saving model');
+      assert.isUndefined(todo.id, 'model id is undefined');
     });
   });
 
   describe('.Read()', function() {
+    it('should read models from collection', function(done) {
+      var spy = sinon.spy();
 
+      todos.on('add', spy);
+      todos.on('reset', spy);
 
-    it('should read a models from collection', function(done) {
       todos.create(mockData, {
         success: function(model) {
-          expect(todos).to.be.a('object');
-          expect(todos.size()).to.equal(1);
-          done();
+
+          assert.equal(spy.callCount, 1, "Temp spy calls");
+
+          todos.reset();
+
+          assert.equal(spy.callCount, 2, "Temp spy calls");
+          assert.equal(todos.size(), 0, "Temp collection size");
+
+          todos.fetch({
+            success: function(){
+
+              assert.equal(spy.callCount, 3, 'Total spy calls');
+              assert.equal(todos.size(), 1, 'Total collection size');
+
+              done();
+            }
+          });
         }
       });
-      todos.fetch();
     });
 
     it('should have proper remaining and completed methods', function(done) {
 
-      var completedMock = _.extend({}, mockData, {completed: true});
+      var completedMock = _.extend({completed: true}, mockData);
 
       todos.on('add', function(){
-
-        expect(todos).to.not.equal(null);
-
-        expect(todos).to.be.a('object').with.length(4);
 
         expect(todos.remaining().length).to.equal(3);
         expect(todos.completed().length).to.equal(1);
 
         todos.remaining()[0].set({completed: true});
+        
         expect(todos.remaining().length).to.equal(2);
         expect(todos.completed().length).to.equal(2);
 
