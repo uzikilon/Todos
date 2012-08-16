@@ -45,7 +45,6 @@ require(['underscore', 'mocha', 'chai', 'sinon'], function(_, mocha, chai, sinon
 
   // Chai
   expect = chai.expect;
-git remote add origin https://github.com/uzikilon/Todos.gitgit remote add origin https://github.com/uzikilon/Todos.git
   // Mocha
   mocha.setup({ui: 'bdd', slow: 500});
   // mocha.setup('bdd');
