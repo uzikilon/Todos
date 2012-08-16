@@ -14,16 +14,12 @@ define(['backbone'], function(Backbone) {
       this.$button = this.$('.icon-checkbox');
     },
     render: function() {
-      if( this.collection.size() ) {
-        this.check().$el.show();
-      }
-      else {
-        this.$el.hide();
-      }
+      this.$el.toggle(this.collection.size() > 0);
+      this.check();
       return this;
     },
     check: function(){
-      this.$button.toggleClass('checked', !this.collection.remaining().length);
+      this.$button.toggleClass('checked', this.collection.size() > 0 && this.collection.remaining().length === 0);
       return this;
     },
     events: {

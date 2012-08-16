@@ -11,6 +11,7 @@ define(['backbone', 'views/TaskView', 'helpers/ViewHelper'], function(Backbone, 
     },
     toggle: function(){
       this.collection.size() ? this.$el.show() : this.$el.hide();
+      this.$el.toggle(this.collection.size() > 0);
     },
     add: function( model ){
       var self = this;

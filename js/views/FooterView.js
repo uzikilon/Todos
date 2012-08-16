@@ -18,7 +18,7 @@ define([
       this.collection.on('add remove reset', this.render, this);
     },
     render: function(){
-      this.$el.css('display', this.collection.size() ? 'block' : 'none');
+      this.collection.size() ? this.$el.show() : this.$el.hide();
       return this;
     }
   });
