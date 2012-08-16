@@ -44,7 +44,7 @@ describe('View :: Task View', function() {
       expect(view.$el.hasClass('editing')).to.equal(true);
     });
     
-    it("should enter exit edit mode on blur", function(){
+    it("should exit edit mode on blur", function(){
       view.$('p').trigger('dblclick');
       expect(view.$el.hasClass('editing')).to.equal(true);
 
@@ -52,7 +52,7 @@ describe('View :: Task View', function() {
       expect(view.$el.hasClass('editing')).to.equal(false);
     });
 
-  it("should enter exit edit mode on ESC", function(){
+  it("should exit edit mode on ESC", function(){
       view.$('p').trigger('dblclick');
       expect(view.$el.hasClass('editing')).to.equal(true);
 

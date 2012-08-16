@@ -63,12 +63,6 @@ describe('View :: Mark All As Completed', function() {
       todos.add(mockData);
       todos.at(0).set('completed', true);
       expect( $checkbox.hasClass('checked') ).to.equal(true);
-    });
-
-    it('should toggle on change', function() {
-      todos.add(mockData);
-      todos.at(0).set('completed', true);
-      expect( $checkbox.hasClass('checked') ).to.equal(true);
       
       todos.add(mockData);
       expect( $checkbox.hasClass('checked') ).to.equal(false);
