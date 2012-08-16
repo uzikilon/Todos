@@ -3,14 +3,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="lib/mocha.css"/>
-  <script>
-     (function() {
-        var script = document.createElement('script'); 
-        script.setAttribute('data-main', ('/test/SpecRunner.js' + '?cb=' + Math.random()));
-        script.setAttribute('src', '/js/lib/require-2.0.5.js');
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
-      })();
-  </script>
+  <script type="text/javascript" src="/js/lib/require-2.0.5.js" data-main="SpecRunner.js"></script>
 </head>
 <body>
   <div id="mocha"></div>
