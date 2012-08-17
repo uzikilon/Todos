@@ -34,7 +34,6 @@ require([
     },
 
     main: function(){
-      var router = this;
       var tasks = new Todo.Collection();
       var view = new MasterView({collection: tasks});
       tasks.fetch({

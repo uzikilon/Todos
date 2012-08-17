@@ -1,8 +1,4 @@
-define([
-    'underscore',
-    'backbone.localStorage'
-  ], function(_, Backbone) {
-
+define(['underscore', 'backbone.localStorage'], function(_, Backbone) {
  
   var Todo = Backbone.Model.extend({
     defaults: {
