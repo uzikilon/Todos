@@ -19,7 +19,8 @@ define(['backbone'], function(Backbone) {
       return this;
     },
     toggle: function(){
-      this.$button.toggleClass('checked', this.collection.size() > 0 && this.collection.remaining().length === 0);
+      var hasRemaining = !!this.collection.size() && !this.collection.remaining().length;
+      this.$button.toggleClass('checked', hasRemaining);
       return this;
     },
     events: {
