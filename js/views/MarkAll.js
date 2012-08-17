@@ -24,7 +24,7 @@ define(['backbone'], function(Backbone) {
       return this;
     },
     events: {
-      'click .icon-checkbox': function(e) {
+      'click': function(e) {
         e.preventDefault();
         var checked = !this.$button.hasClass("checked");
         this.collection.each( function(todo){ todo.save({'completed': checked}); } );

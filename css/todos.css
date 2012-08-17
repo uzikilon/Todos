@@ -5,7 +5,7 @@ body * {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 body > header {
-  width: 490px;
+  width: 440px;
   margin: 0 auto 10px;
   padding: 10px 0;
   background-color: #fff;
@@ -22,7 +22,7 @@ body > header h1 {
 }
 body > footer {
   margin: 0 auto;
-  width: 490px;
+  width: 440px;
 }
 body > footer p {
   font-size: 14px;
@@ -39,7 +39,7 @@ body > footer p a {
   border: 2px solid #aaa;
   border-radius: 5px;
   margin: 0 auto;
-  width: 490px;
+  width: 440px;
 }
 #container input[type="text"] {
   background-color: white;
@@ -49,7 +49,7 @@ body > footer p a {
   margin: 10px 0;
   padding: 8px 8px;
   font-size: 24px;
-  width: 450px;
+  width: 400px;
 }
 #container [class^="icon-"],
 #container [class*=" icon-"] {
@@ -78,6 +78,7 @@ body > footer p a {
   margin: 0 10px;
 }
 #container .markAll {
+  cursor: pointer;
   margin-left: 12px;
   margin-bottom: 20px;
 }
@@ -89,7 +90,7 @@ body > footer p a {
 #container .taskList {
   margin: 0 10px;
   padding: 0;
-  width: 475px;
+  width: 425px;
   font-size: 20px;
 }
 #container .taskList .task {
@@ -104,7 +105,7 @@ body > footer p a {
   display: inline-block;
   white-space: nowrap;
   margin: 0;
-  width: 390px;
+  width: 345px;
   overflow: hidden;
   line-height: 32px;
 }
@@ -116,7 +117,7 @@ body > footer p a {
   vertical-align: middle;
 }
 #container .taskList .task input.editbox {
-  width: 445px;
+  width: 395px;
   display: none;
 }
 #container .taskList .task.editing div {
