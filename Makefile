@@ -1,4 +1,4 @@
-all: npm less minify commit
+all: npm less minify
 
 npm: 
 	@echo "`date`\tinstalling required npm pakages if needed"
@@ -12,6 +12,6 @@ minify:
 	@echo "`date`\tCompiling JS"
 	@node node_modules/.bin/r.js -o js/build.js
 
-commit:
+install: all
 	@echo "`date`\tCommiting changes to git"
 	git commit css/todos.css js/app.min.js -m "Minified packages"
