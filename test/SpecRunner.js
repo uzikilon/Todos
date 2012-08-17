@@ -1,12 +1,6 @@
 require.config({
   baseUrl: "/js/",
   urlArgs: 'cb=' + Math.random(), // cache buster
-  packages: {
-    'specs': {
-      name: 'specs',
-      location: '/test/specs'
-    }
-  },
   paths: {
     jquery: 'lib/jquery-1.8.0',
     underscore: 'lib/underscore-1.3.3',
@@ -52,7 +46,7 @@ require(['underscore', 'mocha', 'chai', 'sinon'], function(_, mocha, chai, sinon
 
   var specs = _.extend([], {
     addSpec: function(spec) {
-      this.push('../test/specs/' + spec);
+      this.push('../test/spec/' + spec);
     }
   });
     
