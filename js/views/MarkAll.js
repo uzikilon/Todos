@@ -8,17 +8,17 @@ define(['backbone'], function(Backbone) {
   var View = Backbone.View.extend({
     className: 'markAll',
     initialize: function(){
-      this.collection.on('change:completed', this.toggle, this);
+      this.collection.on('change:completed', this.toggleChecked, this);
       this.collection.on('reset add remove', this.render, this);
       this.$el.html(template).hide();
       this.$button = this.$('.icon-checkbox');
     },
     render: function() {
       this.$el.toggle(this.collection.size() > 0);
-      this.toggle();
+      this.toggleChecked();
       return this;
     },
-    toggle: function(){
+    toggleChecked: function(){
       var hasRemaining = this.collection.size() > 0 && !this.collection.remaining().length;
       this.$button.toggleClass('checked', hasRemaining);
       return this;
@@ -28,7 +28,7 @@ define(['backbone'], function(Backbone) {
         e.preventDefault();
         var checked = !this.$button.hasClass("checked");
         this.collection.each( function(todo){ todo.save({'completed': checked}); } );
-        this.toggle();
+        this.toggleChecked();
       }
     }
   });
