@@ -6,7 +6,7 @@ describe('View :: Footer', function() {
     require(['models/Todo', 'views/FooterView'], function(Todo, View) {
       todos = new Todo.Collection();
       view = new View({collection: todos});
-      $('#sandbox').append(view.render().el);
+      $('#sandbox').html(view.render().el);
       done();
     });
   });

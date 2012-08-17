@@ -7,7 +7,7 @@ describe('View :: Task View', function() {
       todo = new Todo.Model(mockData);
       todo.sync = function(){};
       view = new View({model: todo});
-      $('#sandbox').append(view.render().el);
+      $('#sandbox').html(view.render().el);
       done();
     });
   });

@@ -6,7 +6,7 @@ describe('View :: Mark All As Completed', function() {
     require(['models/Todo', 'views/MarkAll'], function(Todo, View) {
       todos = new Todo.Collection();
       view = new View({collection: todos});
-      $('#sandbox').append(view.render().el);
+      $('#sandbox').html(view.render().el);
       $checkbox = view.$(".icon-checkbox");
       done();
     });

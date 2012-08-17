@@ -28,14 +28,11 @@ describe('Model :: Todo', function() {
     it('should create a todo', function(done) {
       var model = todos.create(mockData, {
         success: function(model) {
-          
           expect(model).to.not.equal(null);
-
           expect(model.get('completed')).to.equal(false);
           expect(model.get('title')).to.equal('Foo Bar');
           expect(model.get('timestamp')).to.be.a('number');
           expect(model.get('id')).to.be.a('string');
-
           done();
         }
       });
