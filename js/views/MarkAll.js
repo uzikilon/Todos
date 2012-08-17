@@ -10,7 +10,7 @@ define(['backbone'], function(Backbone) {
     initialize: function(){
       this.collection.on('change:completed', this.toggle, this);
       this.collection.on('reset add remove', this.render, this);
-      this.$el.html(template);
+      this.$el.html(template).hide();
       this.$button = this.$('.icon-checkbox');
     },
     render: function() {
@@ -19,7 +19,7 @@ define(['backbone'], function(Backbone) {
       return this;
     },
     toggle: function(){
-      var hasRemaining = !!this.collection.size() && !this.collection.remaining().length;
+      var hasRemaining = this.collection.size() > 0 && !this.collection.remaining().length;
       this.$button.toggleClass('checked', hasRemaining);
       return this;
     },
