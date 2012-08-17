@@ -2,7 +2,7 @@
   "author": "Uzi Kilon",
   "name": "Todos",
   "version": "0.0.1",
-  "homepage": "todos.kilon.org",
+  "homepage": "http://todos.kilon.org/",
   "repository": {
     "type": "git",
     "url": "https://github.com/uzikilon/Todos.git"
