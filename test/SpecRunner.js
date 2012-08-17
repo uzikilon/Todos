@@ -47,10 +47,9 @@ require(['underscore', 'mocha', 'chai', 'sinon'], function(_, mocha, chai, sinon
   chai.Assertion.includeStack = false;
   expect = chai.expect;
   assert = chai.assert;
-  
+
   // Mocha
-  mocha.setup({ui: 'bdd', slow: 500});
-  // mocha.setup('bdd');
+  mocha.setup('bdd');
 
   var specs = [];
   specs.addSpec = function(spec){
