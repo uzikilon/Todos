@@ -40,7 +40,7 @@ require.config({
 window.store = "TestStore"; // override local storage store name - for testing
 
 // Require libraries
-require(['underscore', 'jasmine-html', 'sinon'], function(_, jasmine, sinon){
+require(['underscore', 'jquery', 'jasmine-html', 'sinon'], function(_, $, jasmine, sinon){
 
   var jasmineEnv = jasmine.getEnv();
   jasmineEnv.updateInterval = 1000;
@@ -73,8 +73,10 @@ require(['underscore', 'jasmine-html', 'sinon'], function(_, jasmine, sinon){
   specs.addSpec('views/TaskViewSpec');
 
   // Require specs before starting
-  require(specs, function(){
-    jasmineEnv.execute();
+  $(function(){
+    require(specs, function(){
+      jasmineEnv.execute();
+    });
   });
 
 });

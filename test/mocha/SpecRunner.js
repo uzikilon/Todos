@@ -34,7 +34,7 @@ require.config({
 window.store = "TestStore"; // override local storage store name - for testing
 
 // Require libraries
-require(['underscore', 'mocha', 'chai', 'sinon'], function(_, mocha, chai, sinon){
+require(['underscore', 'jquery', 'mocha', 'chai', 'sinon'], function(_, $, mocha, chai, sinon){
 
   // Chai
   chai.Assertion.includeStack = false;
@@ -60,9 +60,11 @@ require(['underscore', 'mocha', 'chai', 'sinon'], function(_, mocha, chai, sinon
   specs.addSpec('views/TaskListSpec');
   specs.addSpec('views/TaskViewSpec');
 
-  // Require specs before starting
-  require(specs, function(){
-    mocha.run().globals(['_', '$', 'jQuery', 'Backbone']);
-  });
+  $(function(){
+    // Require specs before starting
+    require(specs, function(){
+      mocha.run().globals(['_', '$', 'jQuery', 'Backbone', 'stats', 'report']);
+    });
 
+  });
 });
