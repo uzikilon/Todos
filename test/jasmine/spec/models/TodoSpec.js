@@ -11,7 +11,7 @@ describe('Model :: Todo', function() {
         flag = true;
       });
       return flag;
-    }, "Create Models", ASYNC_TIMEOUT);
+    }, "Create Models");
   });
 
   afterEach(function(){
@@ -28,7 +28,7 @@ describe('Model :: Todo', function() {
         }
       });
       return flag;
-    }, "Cleanup Models", ASYNC_TIMEOUT);
+    }, "Cleanup Models");
   });
 
   describe('.Create()', function() {
@@ -41,7 +41,7 @@ describe('Model :: Todo', function() {
           }
         });
         return flag;
-      }, "Create Todo", ASYNC_TIMEOUT);
+      }, "Create Todo");
 
       runs(function(){
         expect(todo).not.toBe(null);
@@ -93,7 +93,7 @@ describe('Model :: Todo', function() {
           }
         });
         return flag;
-      }, "create, reset, read collection", ASYNC_TIMEOUT);
+      }, "create, reset, read collection");
 
     });
 

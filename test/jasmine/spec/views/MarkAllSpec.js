@@ -13,7 +13,7 @@ describe('View :: Mark All As Completed', function() {
         flag = true;
       });
       return flag;
-    }, "Create Models", ASYNC_TIMEOUT);
+    }, "Create Models");
   });
 
 

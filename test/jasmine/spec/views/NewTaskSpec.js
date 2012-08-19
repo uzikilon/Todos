@@ -12,7 +12,7 @@ describe('View :: New Task', function() {
         $('#sandbox').html(view.render().el);
       });
       return flag;
-    }, "Create Models", ASYNC_TIMEOUT);
+    }, "Create Models");
   });
 
   afterEach(function() {
@@ -28,7 +28,7 @@ describe('View :: New Task', function() {
         }
       });
       return flag;
-    }, "Cleanup Models", ASYNC_TIMEOUT);
+    }, "Cleanup Models");
   });
 
   describe('Events Handler', function() {

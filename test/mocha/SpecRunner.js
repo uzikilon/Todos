@@ -1,14 +1,15 @@
 require.config({
   baseUrl: "/js/",
-  urlArgs: 'cb=' + Math.random(), // cache buster
+  urlArgs: 'cb=' + Math.random(),
   paths: {
     jquery: 'lib/jquery-1.8.0',
     underscore: 'lib/underscore-1.3.3',
     backbone: 'lib/backbone-0.9.2',
-    chai: '../test/mocha/lib/chai',
+    'backbone.localStorage': 'lib/backbone.localStorage',
+    sinon: '../test/lib/sinon-1.4.2',
     mocha: '../test/mocha/lib/mocha',
-    sinon: '../test/mocha/lib/sinon-1.4.2',
-    'backbone.localStorage': 'lib/backbone.localStorage'
+    chai: '../test/mocha/lib/chai',
+    spec: '../test/mocha/spec/'
   },
   shim: {
     underscore: {
@@ -42,28 +43,24 @@ require(['underscore', 'jquery', 'mocha', 'chai', 'sinon'], function(_, $, mocha
   assert = chai.assert;
 
   // Mocha
-  mocha.setup('bdd');
+  mocha.setup({ui: 'bdd', ignoreLeaks: true});
+  // mocha.setup('bdd');
 
-  var specs = _.extend([], {
-    addSpec: function(spec) {
-      this.push('../test/mocha/spec/' + spec);
-    }
-  });
-    
-  specs.addSpec('models/TodoSpec');
+  var specs = [];
 
-  specs.addSpec('views/ClearCompletedSpec');
-  specs.addSpec('views/CountViewSpec');
-  specs.addSpec('views/FooterViewSpec');
-  specs.addSpec('views/MarkAllSpec');
-  specs.addSpec('views/NewTaskSpec');
-  specs.addSpec('views/TaskListSpec');
-  specs.addSpec('views/TaskViewSpec');
+  specs.push('spec/models/TodoSpec');
+  specs.push('spec/views/ClearCompletedSpec');
+  specs.push('spec/views/CountViewSpec');
+  specs.push('spec/views/FooterViewSpec');
+  specs.push('spec/views/MarkAllSpec');
+  specs.push('spec/views/NewTaskSpec');
+  specs.push('spec/views/TaskListSpec');
+  specs.push('spec/views/TaskViewSpec');
+
 
   $(function(){
-    // Require specs before starting
     require(specs, function(){
-      mocha.run().globals(['_', '$', 'jQuery', 'Backbone', 'stats', 'report']);
+      mocha.run();//.globals(['Backbone']);
     });
 
   });

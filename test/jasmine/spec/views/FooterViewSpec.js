@@ -12,7 +12,7 @@ describe('View :: Footer', function() {
         flag = true;
       });
       return flag;
-    }, "Create Models", ASYNC_TIMEOUT);
+    }, "Create Models");
   });
 
   afterEach(function() {
