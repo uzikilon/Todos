@@ -9,7 +9,6 @@ require.config({
     sinon: '../test/lib/sinon-1.4.2',
     jasmine: '../test/jasmine/lib/jasmine-1.2.0/jasmine',
     'jasmine-html': '../test/jasmine/lib/jasmine-1.2.0/jasmine-html',
-    'jasmine.async': '../test/jasmine/lib/jasmine-1.2.0/jasmine.async',
     spec: '../test/jasmine/spec/'
   },
   shim: {
