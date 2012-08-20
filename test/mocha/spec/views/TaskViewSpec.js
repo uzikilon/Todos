@@ -1,6 +1,6 @@
 describe('View :: Task View', function() {
 
-  var view, todos, todo, mockData = { title: 'Foo Bar', timestamp: new Date().getTime(), completed: true };
+  var mockData = { title: 'Foo Bar', timestamp: new Date().getTime(), completed: true };
 
   beforeEach(function(done) {
     var that = this;

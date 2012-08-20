@@ -22,7 +22,6 @@ describe('View :: New Task', function() {
     });
   });
 
-
   describe('Events Handler', function() {
     it('should create todo on submit', function() {
         this.view.$('input').val("Foo");
