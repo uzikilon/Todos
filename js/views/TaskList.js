@@ -9,10 +9,6 @@ define(['backbone', 'views/TaskView', 'helpers/ViewHelper'], function(Backbone, 
       this.collection.on('reset', this.render, this);
       this.collection.on('add', this.add, this);
     },
-    toggle: function(){
-      this.collection.size() ? this.$el.show() : this.$el.hide();
-      this.$el.toggle(this.collection.size() > 0);
-    },
     add: function( model ){
       var self = this;
       model._view = new TaskView({model: model});
