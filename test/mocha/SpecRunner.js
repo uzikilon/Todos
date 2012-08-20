@@ -6,9 +6,9 @@ require.config({
     underscore: 'lib/underscore-1.3.3',
     backbone: 'lib/backbone-0.9.2',
     'backbone.localStorage': 'lib/backbone.localStorage',
+    mocha: '../test/lib/mocha',
+    chai: '../test/lib/chai',
     sinon: '../test/lib/sinon-1.4.2',
-    mocha: '../test/mocha/lib/mocha',
-    chai: '../test/mocha/lib/chai',
     spec: '../test/mocha/spec/'
   },
   shim: {

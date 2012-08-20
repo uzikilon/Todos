@@ -109,17 +109,16 @@ Backbone.LocalStorage.sync = Backbone.localSync = function(method, model, option
     case "delete":  resp = store.destroy(model);                           break;
   }
 
-  var delay = 0 * Math.random();
   var fnSuccess = _.bind(options.success, options);
   var fnError = _.bind(options.error, options);
   if (resp) {
-    if(delay)
-      _.delay(fnSuccess, delay, resp);
+    if(Backbone.LocalStorage.DELAY)
+      _.delay(fnSuccess, Backbone.LocalStorage.DELAY * Math.random(), resp);
     else
       _.defer(fnSuccess, resp);
   } else {
-    if(delay)
-      _.delay(fnError, delay, "Record not found");
+    if(Backbone.LocalStorage.DELAY)
+      _.delay(fnError, Backbone.LocalStorage.DELAY * Math.random(), "Record not found");
     else
       _.defer(fnSuccess, "Record not found");
   }

@@ -106,7 +106,7 @@ describe('View :: Task View', function() {
       this.view.$('a.icon-delete').click();
       waits(function(){
         expect($('#sandbox').children().length).toEqual(0);
-      }, 50);
+      }, 150);
     });
     
   });

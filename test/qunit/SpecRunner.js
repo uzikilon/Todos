@@ -7,7 +7,7 @@ require.config({
     backbone: 'lib/backbone-0.9.2',
     'backbone.localStorage': 'lib/backbone.localStorage',
     sinon: '../test/lib/sinon-1.4.2',
-    qunit: '../test/qunit/lib/qunit',
+    qunit: '../test/lib/qunit',
     spec: '../test/qunit/spec/'
   },
   shim: {
@@ -34,7 +34,7 @@ require.config({
 
 window.store = "TestStore"; // override local storage store name - for testing
 
-require(['underscore', 'jquery', 'qunit', 'sinon'], function(_, $, QUnit, sinon){
+require(['underscore', 'jquery', 'backbone.localStorage', 'qunit', 'sinon'], function(_, $, Backbone, QUnit, sinon){
 
   var specs = [];
 
@@ -46,7 +46,6 @@ require(['underscore', 'jquery', 'qunit', 'sinon'], function(_, $, QUnit, sinon)
   specs.push('spec/views/NewTaskSpec');
   specs.push('spec/views/TaskListSpec');
   specs.push('spec/views/TaskViewSpec');
-
 
   $(function(){
     require(specs, function(){

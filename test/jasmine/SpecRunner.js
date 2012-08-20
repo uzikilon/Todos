@@ -6,9 +6,9 @@ require.config({
     underscore: 'lib/underscore-1.3.3',
     backbone: 'lib/backbone-0.9.2',
     'backbone.localStorage': 'lib/backbone.localStorage',
+    jasmine: '../test/lib/jasmine',
+    'jasmine-html': '../test/lib/jasmine-html',
     sinon: '../test/lib/sinon-1.4.2',
-    jasmine: '../test/jasmine/lib/jasmine-1.2.0/jasmine',
-    'jasmine-html': '../test/jasmine/lib/jasmine-1.2.0/jasmine-html',
     spec: '../test/jasmine/spec/'
   },
   shim: {
