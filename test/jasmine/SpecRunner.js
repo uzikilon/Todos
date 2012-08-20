@@ -39,7 +39,7 @@ require.config({
 
 window.store = "TestStore"; // override local storage store name - for testing
 
-require(['underscore', 'jquery', 'jasmine-html', 'jasmine.async', 'sinon'], function(_, $, jasmine, AsyncSpec, sinon){
+require(['underscore', 'jquery', 'jasmine-html', 'sinon'], function(_, $, jasmine, sinon){
 
   var jasmineEnv = jasmine.getEnv();
   jasmineEnv.updateInterval = 1000;

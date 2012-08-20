@@ -3,30 +3,31 @@ describe('Model :: Todo', function() {
   var todos, todo, mockData = { title: 'Foo Bar', timestamp: new Date().getTime() };
 
   beforeEach(function(done) {
+    var that = this;
     require(['models/Todo'], function(Todo) {
-      todos = new Todo.Collection();
-      todo = new Todo.Model();
+      that.todos = new Todo.Collection();
+      that.todo = new Todo.Model();
       done();
     });
   });
 
   afterEach(function(done){
-    // clean mock data from storage
-    todo.destroy();
-    todos.fetch({
+    var that = this;
+    this.todos.fetch({
       success: function(c) {
         c.each(function(m){
           m.destroy();
         });
-        todos = null;
+        that.todo.destroy();
         done();
       }
     });
   });
 
   describe('.Create()', function() {
+
     it('should create a todo', function(done) {
-      var model = todos.create(mockData, {
+      this.todos.create(mockData, {
         success: function(model) {
           expect(model).to.not.equal(null);
           expect(model.get('completed')).to.equal(false);
@@ -37,12 +38,13 @@ describe('Model :: Todo', function() {
         }
       });
     });
+
     it('should fail creating a title-less todo', function() {
       var spy = sinon.spy();
-      todo.on('error', spy);
-      todo.save({});
+      this.todo.on('error', spy);
+      this.todo.save({});
       assert.equal(spy.callCount, 1, 'error saving model');
-      assert.isUndefined(todo.id, 'model id is undefined');
+      assert.isUndefined(this.todo.id, 'model id is undefined');
     });
   });
 
@@ -50,24 +52,25 @@ describe('Model :: Todo', function() {
     it('should read models from collection', function(done) {
       var spy = sinon.spy();
 
-      todos.on('add', spy);
-      todos.on('reset', spy);
+      this.todos.on('add', spy);
+      this.todos.on('reset', spy);
 
-      todos.create(mockData, {
+      var that = this;
+      this.todos.create(mockData, {
         success: function(model) {
 
           assert.equal(spy.callCount, 1, "Temp spy calls");
 
-          todos.reset();
+          that.todos.reset();
 
           assert.equal(spy.callCount, 2, "Temp spy calls");
-          assert.equal(todos.size(), 0, "Temp collection size");
+          assert.equal(that.todos.size(), 0, "Temp collection size");
 
-          todos.fetch({
+          that.todos.fetch({
             success: function(){
 
               assert.equal(spy.callCount, 3, 'Total spy calls');
-              assert.equal(todos.size(), 1, 'Total collection size');
+              assert.equal(that.todos.size(), 1, 'Total collection size');
 
               done();
             }
@@ -79,15 +82,15 @@ describe('Model :: Todo', function() {
     it('should have proper remaining and completed methods', function() {
 
       var completedMock = _.extend({completed: true}, mockData);
-      todos.add([mockData,mockData,mockData,completedMock]);
+      this.todos.add([mockData,mockData,mockData,completedMock]);
 
-      expect(todos.remaining().length).to.equal(3);
-      expect(todos.completed().length).to.equal(1);
+      expect(this.todos.remaining().length).to.equal(3);
+      expect(this.todos.completed().length).to.equal(1);
 
-      todos.remaining()[0].set({completed: true});
+      this.todos.remaining()[0].set({completed: true});
       
-      expect(todos.remaining().length).to.equal(2);
-      expect(todos.completed().length).to.equal(2);
+      expect(this.todos.remaining().length).to.equal(2);
+      expect(this.todos.completed().length).to.equal(2);
       
     });
   });
