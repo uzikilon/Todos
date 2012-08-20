@@ -9,6 +9,7 @@ require.config({
     sinon: '../test/lib/sinon-1.4.2',
     jasmine: '../test/jasmine/lib/jasmine-1.2.0/jasmine',
     'jasmine-html': '../test/jasmine/lib/jasmine-1.2.0/jasmine-html',
+    'jasmine.async': '../test/jasmine/lib/jasmine-1.2.0/jasmine.async',
     spec: '../test/jasmine/spec/'
   },
   shim: {
@@ -39,7 +40,7 @@ require.config({
 
 window.store = "TestStore"; // override local storage store name - for testing
 
-require(['underscore', 'jquery', 'jasmine-html', 'sinon'], function(_, $, jasmine, sinon){
+require(['underscore', 'jquery', 'jasmine-html', 'jasmine.async', 'sinon'], function(_, $, jasmine, AsyncSpec, sinon){
 
   var jasmineEnv = jasmine.getEnv();
   jasmineEnv.updateInterval = 1000;

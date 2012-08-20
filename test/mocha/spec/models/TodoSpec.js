@@ -76,24 +76,19 @@ describe('Model :: Todo', function() {
       });
     });
 
-    it('should have proper remaining and completed methods', function(done) {
+    it('should have proper remaining and completed methods', function() {
 
       var completedMock = _.extend({completed: true}, mockData);
-
-      todos.on('add', function(){
-
-        expect(todos.remaining().length).to.equal(3);
-        expect(todos.completed().length).to.equal(1);
-
-        todos.remaining()[0].set({completed: true});
-        
-        expect(todos.remaining().length).to.equal(2);
-        expect(todos.completed().length).to.equal(2);
-
-        done();
-      });
-
       todos.add([mockData,mockData,mockData,completedMock]);
+
+      expect(todos.remaining().length).to.equal(3);
+      expect(todos.completed().length).to.equal(1);
+
+      todos.remaining()[0].set({completed: true});
+      
+      expect(todos.remaining().length).to.equal(2);
+      expect(todos.completed().length).to.equal(2);
+      
     });
   });
 

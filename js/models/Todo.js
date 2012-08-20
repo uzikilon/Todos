@@ -1,6 +1,9 @@
 define(['underscore', 'backbone.localStorage'], function(_, Backbone) {
- 
+  
+  var store = new Backbone.LocalStorage(window.store || "Todos"); // for testing purposes
+
   var Todo = Backbone.Model.extend({
+    localStorage: store,
     defaults: {
       title: "",
       timestamp: 0,
@@ -14,7 +17,7 @@ define(['underscore', 'backbone.localStorage'], function(_, Backbone) {
   });
  
   var Todos = Backbone.Collection.extend({
-    localStorage: new Backbone.LocalStorage(window.store || "Todos"), // for testing purposes
+    localStorage: store,
     model: Todo,
     completed: function() {
       return this.where({completed: true});
