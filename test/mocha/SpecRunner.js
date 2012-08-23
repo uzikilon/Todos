@@ -26,6 +26,9 @@ require.config({
     mocha: {
       exports: 'mocha'
     },
+    chai: {
+      exports: 'chai'
+    },
     sinon: {
       exports: "sinon"
     }
@@ -34,34 +37,35 @@ require.config({
 
 window.store = "TestStore"; // override local storage store name - for testing
 
-// Require libraries
-require(['underscore', 'jquery', 'mocha', 'chai', 'sinon'], function(_, $, mocha, chai, sinon){
+require(['underscore', 'jquery', 'mocha', 'chai', 'sinon'], function(_, $, mocha, chai, sinon) {
 
   // Chai
-  chai.Assertion.includeStack = false;
-  expect = chai.expect;
-  assert = chai.assert;
+  this.assert = chai.assert;
+  this.expect = chai.expect;
+
 
   // Mocha
   mocha.setup({ui: 'bdd', ignoreLeaks: true});
-  // mocha.setup('bdd');
 
   var specs = [];
 
-  specs.push('spec/models/TodoSpec');
-  specs.push('spec/views/ClearCompletedSpec');
+  // specs.push('spec/models/TodoSpec');
+  // specs.push('spec/views/ClearCompletedSpec');
   specs.push('spec/views/CountViewSpec');
-  specs.push('spec/views/FooterViewSpec');
-  specs.push('spec/views/MarkAllSpec');
-  specs.push('spec/views/NewTaskSpec');
-  specs.push('spec/views/TaskListSpec');
-  specs.push('spec/views/TaskViewSpec');
+  // specs.push('spec/views/FooterViewSpec');
+  // specs.push('spec/views/MarkAllSpec');
+  // specs.push('spec/views/NewTaskSpec');
+  // specs.push('spec/views/TaskListSpec');
+  // specs.push('spec/views/TaskViewSpec');
 
+  require(specs, function(){
 
-  $(function(){
-    require(specs, function(){
+    
+
+      // console.log('chai', chai, 'assert', assert, 'expect', expect, 'should', should);
+    $(function(){
       mocha.run();//.globals(['Backbone']);
     });
-
   });
+
 });

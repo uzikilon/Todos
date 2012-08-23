@@ -67,7 +67,7 @@ describe('Model :: Todo', function() {
     });
 
     it('should fail creating a title-less todo', function() {
-      var spy = sinon.spy();
+      var spy = jasmine.createSpy();
       this.todo.on('error', spy);
       this.todo.save({});
       expect(spy.callCount).toEqual(1);
@@ -79,7 +79,7 @@ describe('Model :: Todo', function() {
   describe('.Read()', function() {
     it('should read models from collection', function() {
       var done = false,
-          spy = sinon.spy(),
+          spy = jasmine.createSpy();
           todos = this.todos;
 
       todos.on('reset', spy);

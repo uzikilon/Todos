@@ -7,7 +7,7 @@ define(['backbone'], function(Backbone) {
 
   var View = Backbone.View.extend({
     className: 'markAll',
-    initialize: function(){
+    initialize: function() {
       this.collection.on('change:completed', this.toggleChecked, this);
       this.collection.on('reset add remove', this.render, this);
       this.$el.html(template).hide();
@@ -18,7 +18,7 @@ define(['backbone'], function(Backbone) {
       this.toggleChecked();
       return this;
     },
-    toggleChecked: function(){
+    toggleChecked: function() {
       var hasRemaining = this.collection.size() > 0 && !this.collection.remaining().length;
       this.$button.toggleClass('checked', hasRemaining);
       return this;

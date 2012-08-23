@@ -89,7 +89,7 @@ describe('View :: Task View', function() {
     it("should destroy model when hitting delete", function(){
       
       // set up spys to confirm callbacks are being called
-      var spy = sinon.spy();
+      var spy = jasmine.createSpy();
       this.todo.on('destroy', spy);
       this.view.on('remove', spy);
 

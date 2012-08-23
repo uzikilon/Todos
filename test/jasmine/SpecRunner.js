@@ -8,7 +8,6 @@ require.config({
     'backbone.localStorage': 'lib/backbone.localStorage',
     jasmine: '../test/lib/jasmine',
     'jasmine-html': '../test/lib/jasmine-html',
-    sinon: '../test/lib/sinon-1.4.2',
     spec: '../test/jasmine/spec/'
   },
   shim: {
@@ -29,9 +28,6 @@ require.config({
     'jasmine-html': {
       deps: ['jasmine'],
       exports: 'jasmine'
-    },
-    sinon: {
-      exports: "sinon"
     }
   }
 });
@@ -39,7 +35,7 @@ require.config({
 
 window.store = "TestStore"; // override local storage store name - for testing
 
-require(['underscore', 'jquery', 'jasmine-html', 'sinon'], function(_, $, jasmine, sinon){
+require(['underscore', 'jquery', 'jasmine-html'], function(_, $, jasmine){
 
   var jasmineEnv = jasmine.getEnv();
   jasmineEnv.updateInterval = 1000;

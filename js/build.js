@@ -4,6 +4,6 @@
   name: '../node_modules/almond/almond',
   include: 'app',
   out: 'app.min.js',
-  logLevel: 0,
+  logLevel: 2,
   preserveLicenseComments: false
 })
