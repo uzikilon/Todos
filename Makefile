@@ -1,5 +1,3 @@
-export PATH := $(PATH):node_modules/.bin
-
 all: npm less jshint minify
 
 npm:
@@ -9,15 +7,15 @@ npm:
 
 less:
 	@echo "`date`\tCompiling less into minified css"
-	@lessc --yui-compress css/todos.less > css/todos.css
+	@node_modules/.bin/lessc --yui-compress css/todos.less > css/todos.css
 
 jshint:
 	@echo "`date`\tRunning JSHint"
-	@jshint --config test/jshint.json ./test/* ./js/*
+	@node_modules/.bin/jshint --config test/jshint.json ./test/* ./js/*
 
 minify:
 	@echo "`date`\tCombining and minifying javascript"
-	@r.js -o js/build.js
+	@node_modules/.bin/r.js -o js/build.js
 
 install: all
 	@echo "`date`\tCommiting changes to git"
