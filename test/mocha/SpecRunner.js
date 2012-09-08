@@ -43,7 +43,6 @@ require(['underscore', 'jquery', 'mocha', 'chai', 'sinon'], function(_, $, mocha
   this.assert = chai.assert;
   this.expect = chai.expect;
 
-
   // Mocha
   mocha.setup({ui: 'bdd', ignoreLeaks: true});
 
@@ -59,10 +58,6 @@ require(['underscore', 'jquery', 'mocha', 'chai', 'sinon'], function(_, $, mocha
   specs.push('spec/views/TaskViewSpec');
 
   require(specs, function(){
-
-    
-
-      // console.log('chai', chai, 'assert', assert, 'expect', expect, 'should', should);
     $(function(){
       mocha.run();//.globals(['Backbone']);
     });

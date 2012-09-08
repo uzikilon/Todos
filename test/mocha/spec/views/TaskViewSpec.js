@@ -83,16 +83,15 @@ describe('View :: Task View', function() {
 
     it("should destroy model when hitting delete", function(done){
       this.todo.on('destroy', function(){ done(); });
-      this.view.$('a.icon-delete').click();
+      this.view.$('.icon-delete').click();
     });
 
     it("should remove view when hitting delete", function(done){
-      this.view.$('a.icon-delete').click();
-      var self = this;
+      this.view.$('.icon-delete').click();
       _.delay(function(){
-        expect(self.view.$('#sandbox').children().length).to.equal(0);
+        expect($('#sandbox').children().length).to.equal(0);
         done();
-      }, 500);
+      }, 600);
     });
     
   });
