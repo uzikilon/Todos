@@ -1,7 +1,5 @@
 define(['backbone', 'views/TaskView', 'helpers/ViewHelper'], function(Backbone, TaskView, ViewHelper) {
 
-  var delay = 100;
-
   var View = Backbone.View.extend({
     tagName: 'ul',
     className: 'taskList',
@@ -9,22 +7,14 @@ define(['backbone', 'views/TaskView', 'helpers/ViewHelper'], function(Backbone, 
       this.collection.on('reset', this.render, this);
       this.collection.on('add', this.add, this);
     },
-    add: function( model ){
-      var self = this;
-      model._view = new TaskView({model: model});
-      var $el = model._view.render().$el;
-      this.$el.append($el.hide(function(){
-        $el.fadeIn(ViewHelper.delay, function(){
-          self.trigger('add');
-        });
-      }));
-      this.$el.show();
-    },
     render: function(){
-      this.$el.empty();
-      this.$el.hide();
+      this.$el.empty().hide();
       this.collection.each(this.add, this);
       return this;
+    },
+    add: function(model) {
+      var child = new TaskView({model: model});
+      this.$el.append(child.render().$el).show();
     }
   });
   return View;

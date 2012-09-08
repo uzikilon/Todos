@@ -87,11 +87,12 @@ describe('View :: Task View', function() {
     });
 
     it("should remove view when hitting delete", function(done){
-      this.view.on('remove', function(){
-        expect(this.view.$('#sandbox').children().length).to.equal(0);
-        done();
-      }, this);
       this.view.$('a.icon-delete').click();
+      var self = this;
+      _.delay(function(){
+        expect(self.view.$('#sandbox').children().length).to.equal(0);
+        done();
+      }, 500);
     });
     
   });

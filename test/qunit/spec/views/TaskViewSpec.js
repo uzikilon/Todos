@@ -71,20 +71,13 @@ define(function() {
   });
 
   test("should destroy model when hitting delete", function(){
-    expect(2);
+    expect(1);
     var spy = sinon.spy();
     this.todo.on('destroy', spy);
-    this.view.on('remove', spy);
 
     this.view.$('a.icon-delete').click();
 
     equal(spy.callCount, 1);
-
-    stop();
-    _.delay(function(){
-      equal(spy.callCount, 2);
-      start();
-    }, 150);
   });
 
   test("should remove view when hitting delete", function(){
@@ -93,6 +86,6 @@ define(function() {
     _.delay(function(){
       equal($('#sandbox').children().length, 0);
       start();
-    }, 150);
+    }, 700);
   });
 });

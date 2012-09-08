@@ -46,7 +46,6 @@ require([
         }
       });
     }
-    
   });
 
   // Preload CSS Sprite

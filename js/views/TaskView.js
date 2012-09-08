@@ -18,17 +18,17 @@ define(['jquery','underscore','backbone', 'helpers/ViewHelper'], function($, _, 
     initialize: function(){
       this.model.on('change:completed', this.render, this);
       this.model.on('destroy', this.remove, this);
+      this.$el.hide();
     },
     render: function(){
       this.$el.html( template( this.model.toJSON() ) );
       this.$el.toggleClass('completed', this.model.get('completed'));
+      this.$el.fadeIn();
       return this;
     },
     remove: function(){
-      var self = this;
       this.$el.slideUp(ViewHelper.delay, function(){
-        self.$el.remove();
-        self.trigger('remove');
+        $(this).remove();
       });
     },
     events: {

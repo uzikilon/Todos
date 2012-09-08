@@ -46,21 +46,14 @@ describe('View :: Task List', function() {
         expect(this.view.$el.text()).to.equal("");
     });
 
-    it("should be able to add a child", function(done){
-
-      this.view.on('add', function(){
-        expect(this.view.$('li').length).to.equal(1);
-         done();
-      }, this);
+    it("should be able to add a child", function(){
       this.todos.add(mockData);
+      expect(this.view.$('li').length).to.equal(1);
     });
 
-    it("should be able to add children", function(done){
-      this.view.on('add', function(){
-        expect(this.view.$('li').length).to.equal(4);
-        done();
-      }, this);
+    it("should be able to add children", function(){
       this.todos.reset([mockData,mockData,mockData,mockData]);
+      expect(this.view.$('li').length).to.equal(4);
     });
 
   });
