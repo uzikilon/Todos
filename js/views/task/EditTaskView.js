@@ -3,29 +3,33 @@ define(['jquery','underscore','backbone', 'helpers/ViewHelper'], function($, _, 
   var KEYCODE_ENTER = 13,
       KEYCODE_ESC = 27;
 
+  var template = _.template('<input type="text" value="<%= title %>">');
+
   var View = Backbone.View.extend({
-    tagName: 'input',
+    tagName: 'form',
     className: 'editTaskView',
-    initialize: function(){
-      this.$el.attr('type', 'text');
-    },
     render: function(){
-      this.$el.val( this.model.get('title') );
+      this.$el.html( template( this.model.toJSON() ) );
+      this.$input = this.$('input');
       return this;
     },
     events: {
-      'blur': 'reset',
-      'keyup': function(e){
-        if (e.keyCode === KEYCODE_ENTER) this.update();
+      'blur input': 'reset',
+      'submit': 'update',
+      'keyup input': function(e){
         if (e.keyCode === KEYCODE_ESC) this.reset();
       }
     },
     reset: function(){
       this.trigger('done');
     },
-    update: function(){
-      this.model.save({title: this.$el.val().trim()});
+    update: function(e){
+      e.preventDefault();
+      this.model.save({title: this.$input.val().trim()});
       this.reset();
+    },
+    focus: function(){
+      this.$input.focus().select();
     }
   });
   return View;

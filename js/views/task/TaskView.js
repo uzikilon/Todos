@@ -27,7 +27,7 @@ define(['backbone', 'helpers/ViewHelper', 'views/task/EditTaskView', 'views/task
       this.child = new EditTaskView({model: this.model});
       this.child.on('done', this.view, this);
       this.$el.html( this.child.render().el );
-      this.child.$el.focus().select();
+      this.child.focus();
     }
   });
   return View;

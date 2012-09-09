@@ -27,7 +27,7 @@ describe('View :: Edit Task View', function() {
   describe('Render', function() {
 
     it("should represent model data", function(){
-      expect(this.view.$el.val()).toEqual(this.todo.get('title'));
+      expect(this.view.$input.val()).toEqual(this.todo.get('title'));
     });
 
   });
@@ -37,28 +37,28 @@ describe('View :: Edit Task View', function() {
     it("should exit on blur", function(){
       var spy = jasmine.createSpy();
       this.view.on('done', spy);
-      this.view.$el.blur();
+      this.view.$input.blur();
       expect(spy.callCount).toEqual(1);
     });
 
   it("should exit on ESC", function(){
       var spy = jasmine.createSpy();
       this.view.on('done', spy);
-      this.view.$el.trigger({type: 'keyup', which: 27, keyCode: 27});
+      this.view.$input.trigger({type: 'keyup', which: 27, keyCode: 27});
       expect(spy.callCount).toEqual(1);
     });
   
     it("should save on ENTER", function(){
       var title = "Foo Bar Baz";
-      this.view.$el.val(title);
-      this.view.$el.trigger({type: 'keyup', which: 13, keyCode: 13});
+      this.view.$input.val(title);
+      this.view.$el.submit();
       expect(this.todo.get('title')).toEqual(title);
     });
 
     it("should fail saving empty title", function(){
       var title = "";
-      this.view.$el.val(title);
-      this.view.update();
+      this.view.$input.val(title);
+      this.view.$el.submit();
       expect(this.todo.get('title')).not.toEqual(title);
     });
     
