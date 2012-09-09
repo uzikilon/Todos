@@ -129,28 +129,17 @@ body {
       }
       input {
         vertical-align: middle;
-        &.editbox {
+        &.editTaskView {
           width: @base - 5;
-          display: none;
         }
       }
-
-      &.editing {
-        div {
-          display: none;
-        }
-        input.editbox {
-          display: block;
-        }
-      }
-
-      &.completed {
+      .completed {
         p {
           text-decoration: line-through;
         }
       }
 
-      &.over {
+      .over {
         a.icon-delete {
           opacity: 0.3;
           &.active {

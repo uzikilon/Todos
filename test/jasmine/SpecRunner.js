@@ -57,7 +57,9 @@ require(['underscore', 'jquery', 'jasmine-html'], function(_, $, jasmine){
   specs.push('spec/views/MarkAllSpec');
   specs.push('spec/views/NewTaskSpec');
   specs.push('spec/views/TaskListSpec');
-  specs.push('spec/views/TaskViewSpec');
+  specs.push('spec/views/task/TaskViewSpec');
+  specs.push('spec/views/task/ViewTaskViewSpec');
+  specs.push('spec/views/task/EditTaskViewSpec');
 
 
   $(function(){

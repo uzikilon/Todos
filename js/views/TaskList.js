@@ -1,4 +1,4 @@
-define(['backbone', 'views/TaskView', 'helpers/ViewHelper'], function(Backbone, TaskView, ViewHelper) {
+define(['backbone', 'views/task/TaskView', 'helpers/ViewHelper'], function(Backbone, TaskView, ViewHelper) {
 
   var View = Backbone.View.extend({
     tagName: 'ul',
