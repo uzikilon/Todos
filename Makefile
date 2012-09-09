@@ -7,8 +7,7 @@ npm:
 
 less:
 	@echo "`date`\tCompiling less into minified css"
-	@node_modules/.bin/lessc css/todos.less > css/todos.css
-#	@node_modules/.bin/lessc --yui-compress css/todos.less > css/todos.css
+	@node_modules/.bin/lessc --yui-compress css/todos.less > css/todos.css
 
 jshint:
 	@echo "`date`\tRunning JSHint"
