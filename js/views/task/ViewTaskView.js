@@ -11,7 +11,7 @@ define(['jquery','underscore','backbone', 'helpers/ViewHelper'], function($, _, 
     initialize: function(){
       this.model.on('change:completed', this.render, this);
     },
-    render: function(){
+    render: function() {
       this.$el.html( template( this.model.toJSON() ) );
       this.$el.toggleClass('completed', this.model.get('completed'));
       return this;
@@ -20,25 +20,27 @@ define(['jquery','underscore','backbone', 'helpers/ViewHelper'], function($, _, 
       'dblclick p': function(){
         this.trigger('edit');
       },
+      'click .icon-delete': function(e) {
+        e.preventDefault();
+        this.model.destroy();
+      },
       'click .icon-checkbox': function(e) {
         e.preventDefault();
         this.model.save({'completed': !$(e.target).hasClass('checked')});
       },
       'mouseover': function(e){
         this.$el.addClass('over');
+        var $target = $(e.target);
+        if( $target.hasClass('icon-delete') ) {
+          $target.addClass('active');
+        }
       },
       'mouseout': function(e){
         this.$el.removeClass('over');
-      },
-      'mouseover a.icon-delete': function(e){
-        $(e.target).addClass('active');
-      },
-      'mouseout a.icon-delete': function(e){
-        $(e.target).removeClass('active');
-      },
-      'click a.icon-delete': function(e) {
-        e.preventDefault();
-        this.model.destroy();
+        var $target = $(e.target);
+        if( $target.hasClass('icon-delete') ) {
+          $target.removeClass('active');
+        }
       }
     }
   });

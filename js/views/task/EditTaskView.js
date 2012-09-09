@@ -1,7 +1,6 @@
 define(['jquery','underscore','backbone', 'helpers/ViewHelper'], function($, _, Backbone, ViewHelper) {
   
-  var KEYCODE_ENTER = 13,
-      KEYCODE_ESC = 27;
+  var KEYCODE_ESC = 27;
 
   var template = _.template('<input type="text" value="<%= title %>">');
 
@@ -17,7 +16,9 @@ define(['jquery','underscore','backbone', 'helpers/ViewHelper'], function($, _, 
       'blur input': 'reset',
       'submit': 'update',
       'keyup input': function(e){
-        if (e.keyCode === KEYCODE_ESC) this.reset();
+        if ( e.keyCode === KEYCODE_ESC ){
+          this.reset();
+        }
       }
     },
     reset: function(){
