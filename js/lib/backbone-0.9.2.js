@@ -53,7 +53,6 @@
   // Runs Backbone.js in *noConflict* mode, returning the `Backbone` variable
   // to its previous owner. Returns a reference to this Backbone object.
   Backbone.noConflict = function() {
-    console.log("HERE", this);
     root.Backbone = previousBackbone;
     return this;
   };
