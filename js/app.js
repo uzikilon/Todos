@@ -49,7 +49,7 @@ require([
   });
 
   // Preload CSS Sprite
-  $('<img/>').attr('src', "/css/glyphicons.png");
+  $('<img/>').attr('src', "./css/glyphicons.png");
 
   var router = new Router();
   Backbone.history.start();
