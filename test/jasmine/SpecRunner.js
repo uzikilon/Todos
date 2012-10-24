@@ -1,9 +1,9 @@
 require.config({
-  baseUrl: "/js/",
+  baseUrl: "../../js/",
   urlArgs: 'cb=' + Math.random(),
   paths: {
     jquery: 'lib/jquery-1.8.0',
-    underscore: 'lib/underscore-1.3.3',
+    underscore: 'lib/underscore-1.4.2',
     backbone: 'lib/backbone-0.9.2',
     'backbone.localStorage': 'lib/backbone.localStorage',
     jasmine: '../test/lib/jasmine',
